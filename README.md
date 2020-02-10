@@ -4,6 +4,8 @@
 
 ## https://www.petfinder.com/developers/api-docs
 
+https://imgur.com/a/d2h7RBJ
+
 ## Challenges for this are connecting the front end with the back end
 
 ## MVP: The ability to create a user, login, favorite dogs, and submit applications
@@ -26,7 +28,7 @@
 
 
 Task	            Priority	Estimated Time	Time Invested	Actual Time
-Add Contact Form	L	3 hrs	2 hrs	3 hrs
+Add Create User 	L	3 hrs	2 hrs	3 hrs
 Create CRUD Actions	H	3 hrs	1 hrs	TBD
 TOTAL		            6 hrs	3 hrs	TBD
 

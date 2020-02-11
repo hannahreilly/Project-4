@@ -16,16 +16,6 @@ class Feed extends Component {
     }
   }
 
-  handleAdd = async (e, sentGoal) => {
-    e.preventDefault();
-    const goal = {
-      name: sentGoal.name,
-      plan: sentGoal.plan,
-      motivation: sentGoal.motivation,
-      user_id: this.props.currentUser.id
-    }
-  }
-
   componentDidMount = async () => {
     try {
       const userResponse = await axios(`https://localhost:3000`);
@@ -55,8 +45,8 @@ class Feed extends Component {
     })
   }
 
-  addDefaultSrc(ev) {
-    ev.target.src = 'http://www.racemph.com/wp-content/uploads/2016/09/profile-image-placeholder.png'
+  addDefaultSrc(e) {
+    e.target.src = 'http://www.racemph.com/wp-content/uploads/2016/09/profile-image-placeholder.png'
   }
 
   render() {

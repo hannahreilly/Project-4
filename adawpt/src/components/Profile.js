@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 
-class UserProfile extends Component {
+class Profile extends Component {
 
  state = {
     isEditFormOn: false,
@@ -116,7 +116,6 @@ class UserProfile extends Component {
   }
 
   profile = ()=>{
-
     const { name, location, username, gender} = this.props.user
     return (<div className="profile-div">
          {this.renderGenderPhoto()}
@@ -146,20 +145,11 @@ class UserProfile extends Component {
             }
 
          </button>
-        
-         <button className="tooltip" onClick={this.handleDelete} >
-            <span className="delete-button">Delete your account</span> 
-          
-            <span className="tooltiptext">Are your sure that you wanna leave puppies alone? 🐶</span>
-          </button>
           </div>
-          
       </div>)
   }
  
  render() {
-
-
   if (localStorage.loggedInUserId){
     return(
       <div className="profile-item">
@@ -177,5 +167,4 @@ class UserProfile extends Component {
      )
   }
  }
-
-export default UserProfile
+export default Profile;

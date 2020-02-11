@@ -32,24 +32,25 @@ class Header extends React.Component {
               <h3>Reasons for Choosing US</h3>
 	        
 	            <button>READ MORE</button>
-            </div>
+            
             <nav>
           {this.props.currentUser ?
             <div className="header-links-container">
               <Link to="/feed">Feed</Link>
               <Link to ="/profile">Profile</Link>
               {this.props.currentUser.id &&
-                <Link onClick={this.handleProfileClick}>Profile</Link>
+              <Link onClick={this.handleProfileClick}>Profile</Link>
               }
               <Link to="/" onClick={this.props.handleLogout}>Logout</Link>
             </div>
             :
             <div className="header-links-container">
-              <Link to="/login">Login</Link>
-              <Link to="/register">Sign Up</Link>
+              <button><Link to="/login">Login</Link></button>
+              <button><Link to="/register">Sign Up</Link></button>
             </div>
           }
           </nav>
+        </div>
         </div>
         
         </header>
@@ -58,4 +59,4 @@ class Header extends React.Component {
   }
 }
 
-export default withRouter(Header)
+export default withRouter(Header);

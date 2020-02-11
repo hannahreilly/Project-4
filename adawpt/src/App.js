@@ -6,6 +6,7 @@ import LoginForm from './components/Login';
 import RegisterForm from './components/Register';
 import Header from './components/Header';
 import Feed from './components/Feed';
+import Profile from './components/Profile';
 
 class App extends Component {
   constructor(props){
@@ -68,9 +69,11 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <Profile />
+        <Feed />
         <nav>
-        <Route path = "/profile"/>
-
+        <Route path = "/profile" component={Profile}/>
+        <Route path="/feed" component={Feed} />
         {this.state.errorText && <p className= "error"> {this.state.errorText} </p>}
         <Route path = "/login" render = {() => (
         <LoginForm handleLogin={this.handleLogin} />
@@ -78,7 +81,7 @@ class App extends Component {
         <Route path = "/register" render={() => (
         <RegisterForm handleRegister = {this.handleRegister}/>
         )} />
-        <Feed />
+
         </nav>
       </div>
     );

@@ -1,9 +1,11 @@
 class User < ApplicationRecord
-  has_many :adopts, dependent: :destroy
-  has_many :pets, through: :adopts
-
+  # encrypt password
   has_secure_password
 
-  validates_presence_of :username, :name, :location
-  validates_uniqueness_of :username, :case_sensitive => false
+  # Model associations
+  has_many :dogs, foreign_key: :created_by
+  # Validations
+  validates :name, presence: true
+  validates :email, uniqueness: true, presence: true
+  validates :password_digest, presence: true
 end

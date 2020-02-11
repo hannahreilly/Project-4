@@ -1,217 +1,181 @@
-// import React, { Component } from 'react';
-// import axios from 'axios'
-// import deleteicon from '../Assets/delete.svg'
-// import completeicon from '../Assets/complete.svg'
-// import SweetAlert from 'react-bootstrap-sweetalert'
-// import { createGoal, editGoal } from '../services/apiHelper'
-// import AddGoal from './AddGoal'
-// import EditGoal from './EditGoal'
-
-// export default class Profile extends Component {
-//   constructor(props) {
-//     super(props)
-
-//     this.state = {
-//       user: "",
-//       goals: [],
-//       apiDataLoaded: false,
-//       alert: null
-//     }
-//   }
-
-//   componentDidMount = async () => {
-//     try {
-//       const goalResponse = await axios(`https://intense-sands-64987.herokuapp.com/goals`);
-//       let goals = goalResponse.data;
-//       const user = this.props.users.find(user => {
-//         return user.id === this.props.currentUser.id
-//       })
-//       goals = goals.filter(goal => {
-//         return goal.user_id === parseInt(this.props.currentUser.id)
-//       })
-//       this.setState({
-//         user,
-//         goals,
-//         apiDataLoaded: true
-//       })
-//     } catch (e) {
-//       console.error(e)
-//     }
-//   }
-
-//   handleDelete = async (goalToDelete) => {
-//     try {
-//       await axios.delete(`https://intense-sands-64987.herokuapp.com/goals/${goalToDelete}`);
-//       const goals = this.state.goals.filter(goal => (
-//         goal.id !== goalToDelete
-//       ))
-//       this.setState({
-//         goals,
-//         alert: null
-//       })
-//     } catch (e) {
-//       console.error(e);
-//     }
-//   }
+import React, { Component } from 'react'
 
 
-//   goalComplete = async (e, completedGoalId) => {
-//     e.preventDefault();
-//     try {
-//       const goals = this.state.goals.filter(goal => (
-//         goal.id !== completedGoalId
-//       ))
-//       const completedGoal = this.state.goals.find(goal => (
-//         goal.id === completedGoalId
-//       ));
-//       completedGoal.is_complete = !completedGoal.is_complete
-//       if (completedGoal.is_complete === true) {
-//         this.setState({
-//           goals: [...goals, completedGoal]
-//         })
-//       } else {
-//         this.setState({
-//           goals: [completedGoal, ...goals]
-//         })
-//       }
-//       await axios.put(`https://intense-sands-64987.herokuapp.com/goals/${completedGoalId}`, completedGoal);
-//     } catch (e) {
-//       console.error(e);
-//     }
-//   }
+class UserProfile extends Component {
 
-//   confirmDelete(e, goalId) {
-//     e.preventDefault();
-//     const getAlert = () => (
-//       <SweetAlert
-//         danger
-//         showCancel
-//         showCloseButton
-//         cancelBtnBsStyle="default"
-//         confirmBtnText="Delete"
-//         confirmBtnBsStyle="danger"
-//         title="Are you sure?"
-//         onConfirm={() => this.handleDelete(goalId)}
-//         onCancel={this.hideAlert}
-//         focusConfirmBtn
-//       >
-//         You will not be able to recover this goal!
-//       </SweetAlert>
-//     );
+ state = {
+    isEditFormOn: false,
+    name: "",
+    username: "",
+    location: "", 
+    gender: ""
+    
+ }
 
-//     this.setState({
-//       alert: getAlert()
-//     });
-//   }
+  handleEditButton = ()=>{
+    this.setState({
+      isEditFormOn: !this.state.isEditFormOn,
+      name: this.props.user.name,
+      username: this.props.user.username,
+      location: this.props.user.location, 
+      
+    })
+  }
 
-//   addDefaultSrc(ev) {
-//     ev.target.src = 'http://www.racemph.com/wp-content/uploads/2016/09/profile-image-placeholder.png'
-//   }
+  handleOnChange = (event) => {
+    console.log(event.target.value)
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
 
-//   hideAlert = () => {
-//     this.setState({
-//       alert: null
-//     });
-//   }
+  handleOnSubmit = (e) => {
+    e.preventDefault()
+    fetch(`http://localhost:3000/users/${this.props.user.id}`, {
+      method: 'PATCH',
+      headers: {
+        "Authorization": localStorage.token,
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }, 
+      body: JSON.stringify({
+        name: this.state.name,
+        username: this.state.username,
+        location: this.state.location,
+      })
 
-//   handleAdd = async (e, sentGoal) => {
-//     e.preventDefault();
-//     const goal = {
-//       name: sentGoal.name,
-//       plan: sentGoal.plan,
-//       motivation: sentGoal.motivation,
-//       user_id: this.props.currentUser.id
-//     }
-//     const currentGoal = await createGoal(goal);
-//     const goalResponse = await axios(`https://intense-sands-64987.herokuapp.com/goals`);
-//     let goals = goalResponse.data;
-//     const user = this.props.users.find(user => {
-//       return user.id === this.props.currentUser.id
-//     })
-//     goals = goals.filter(goal => {
-//       return goal.user_id === parseInt(this.props.currentUser.id)
-//     })
-//     console.log(goals)
-//     this.setState({
-//       goals
-//     })
-//   }
+    })
+    .then(res => res.json())
+    .then(() => {
+      this.setState({
+           isEditFormOn: false
+        }, this.props.fetchUser())
+      }
+    )
+      
+  }
 
-//   handleEdit = async (e, sentGoal, goalId) => {
-//     e.preventDefault();
-//     const goal = {
-//       name: sentGoal.name,
-//       plan: sentGoal.plan,
-//       motivation: sentGoal.motivation,
-//       user_id: this.props.currentUser.id
-//     }
-//     const id = goalId;
-//     const currentGoal = await axios.put(`https://intense-sands-64987.herokuapp.com/goals/${goalId}`, goal);
+  renderGenderPhoto = ()=>{
+    if (this.props.user.gender === "Female"){
+      return  <img className="profile-img" 
+      src="https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/87-512.png"
+       alt={this.props.user.name}/> 
+    } else if( this.props.user.gender === "Male"){
+      
+       return <img className="profile-img" 
+        src="https://cdn0.iconfinder.com/data/icons/finance-1-8/151/25-512.png"
+         alt={this.props.user.name}/> 
+      
+    } else  if (this.props.user.gender === "Prefered not to say"){
+     return  <img className="profile-img" 
+        src="https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png"
+         alt={this.props.user.name}/> 
+    } else {
+      return  <img className="profile-img" 
+      src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Question_mark_alternate.svg"
+       alt={this.props.user.name}/>
+    }
+  }
 
-//     //returning the goals
-//     const goalResponse = await axios(`https://intense-sands-64987.herokuapp.com/goals`);
-//     let goals = goalResponse.data;
-//     goals = goals.filter(goal => {
-//       return goal.user_id === parseInt(this.props.currentUser.id)
-//     })
-//     this.setState({
-//       goals
-//     })
-//   }
+  handleDelete = ()=>{
+    fetch(`http://localhost:3000/users/${this.props.user.id}`,{
+      method: "DELETE"
+    })
+    .then(
+      this.props.logOut()
+    )
+  }
+  
+  editForm =  ()=>{
+   return (<form onChange={this.handleOnChange}>
+        <label htmlFor="name">Name:</label>
+        <input type="text" id="name" name="name" value={this.state.name}/>
+  
+        <label htmlFor="username" >Username:</label>
+        <input type="text" id="username" name="username" value={this.state.username}/>
+  
+        <label htmlFor="location">Location:</label>
+        <input type="text" id="location" name="location" value={this.state.location}/>
+  
+        <label htmlFor="gender">Gender:</label>
+        <select name="gender">
+          <option value="default">Your prefered gender</option>
+          <option value="Female">
+            Female
+          </option>
+          <option value="Male">
+            Male
+          </option>
+          <option value="Prefered not to say">
+            Prefered not to say
+          </option>
+        </select>
+    
+        <input type="submit" onClick={(event) => this.handleOnSubmit(event)}/>
+    </form>)
+  }
 
-//   render() {
-//     return (
-//       <div>
-//         <div className="profile">
-//           <img onError={this.addDefaultSrc} src={this.state.user.profile_pic_url} alt="profile" className="profile-image"></img>
+  profile = ()=>{
 
-//           <section className="names">
-//             <h1>{this.state.user.first_name} {this.state.user.last_name}</h1>
-//             <h4 className="fun-fact">Fun Fact: "{this.state.user.fun_fact}"</h4>
-//           </section>
+    const { name, location, username, gender} = this.props.user
+    return (<div className="profile-div">
+         {this.renderGenderPhoto()}
+         <div className="profile-info">
+          <h2>
+            {name}
+          </h2>
 
-//           <section className="location">
-//             <img className="pinpoint" src={this.props.pinpoint} alt="map"></img>
-//             <h4>{this.state.user.location}</h4>
-//           </section>
-//         </div >
-//         <div className="goals">
-//           <h3 className="blue-highlight">{this.state.user.first_name}'s Goals</h3>
-//           {this.state.user.id === this.props.currentUser.id &&
-//             <div className="add-button">
-//               <AddGoal handleAdd={this.handleAdd} />
-//             </div>
-//           }
-//           {this.state.goals.length > 0 ?
-//             <div>
-//               <div className="goal-wrapper">
-//                 {this.state.goals.map(goal => (
-//                   <div className={goal.is_complete ? "complete single-goal" : "incomplete single-goal"} key={goal.id}>
-//                     <h4 className="blue-highlight">{goal.name}</h4>
-//                     <h5><span className="right">></span> My Motivation</h5>
-//                     <p>{goal.motivation}</p>
-//                     <h5><span className="right">></span> My Plan</h5>
-//                     <p>{goal.plan}</p>
-//                     {this.state.user.id === this.props.currentUser.id &&
-//                       <div className="task-buttons">
-//                         <img src={completeicon} className="task-single-button" onClick={(e) => this.goalComplete(e, goal.id)}></img>
-//                         <EditGoal goalId={goal.id}
-//                           handleEdit={this.handleEdit} />
-//                         <img src={deleteicon} className="task-single-button" onClick={(e) => this.confirmDelete(e, goal.id)}></img>
-//                         {this.state.alert}
-//                       </div>
-//                     }
-//                   </div>
-//                 ))}
-//               </div>
-//               <p className="end">🏁 Those are all of {this.state.user.first_name}'s goals... for now!</p>
-//             </div>
-//             :
-//             <h3 id="no-goals">{this.state.user.first_name} does not have any goals set up yet.</h3>
-//           }
+          <p> 
+            <b className="bold">Location:</b> 
+            {location}
+          </p>
+        
+          <p> 
+            <b className="bold">Username:</b> 
+            {username}
+          </p>
+    
+          <p> 
+            <b className="bold">Gender:</b> 
+            {gender}
+          </p>
 
-//         </div>
-//       </div>
-//     )
-//   }
-// }
+          <button onClick={this.handleEditButton} className="profile-edit-button">
+            { this.state.isEditFormOn?
+              "Profile" : "Edit me"
+            }
+
+         </button>
+        
+         <button className="tooltip" onClick={this.handleDelete} >
+            <span className="delete-button">Delete your account</span> 
+          
+            <span className="tooltiptext">Are your sure that you wanna leave puppies alone? 🐶</span>
+          </button>
+          </div>
+          
+      </div>)
+  }
+ 
+ render() {
+
+
+  if (localStorage.loggedInUserId){
+    return(
+      <div className="profile-item">
+       { this.state.isEditFormOn ? 
+          this.editForm()
+           :
+          this.profile()
+       }
+     </div>
+      )
+     } else
+       return (
+         <> 
+         </>
+     )
+  }
+ }
+
+export default UserProfile

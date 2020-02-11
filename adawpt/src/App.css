@@ -5,10 +5,16 @@
   justify-content: center;
 }
 
+body {
+background-image: url('https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+background-size: cover;
+}
+
 .login {
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 100vw;
 }
 
 form {
@@ -22,13 +28,13 @@ form {
   border-radius: .75vw;
   min-height: 100%;
   max-width: 20%;
+  
 }
 
 *{padding: 0; margin: 0; box-sizing: border-box;}
 body{height: 900px;}
 
 header {
-	background: url('https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
 	text-align: center;
 	width: 100%;
 	height: auto;
@@ -37,6 +43,7 @@ header {
 	position: relative;
 	overflow: hidden;
 	border-radius: 0 0 85% 85% / 30%;
+	background-color: aquamarine;
 }
 
 header .overlay{

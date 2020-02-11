@@ -69,16 +69,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <nav>
-          {
-            this.state.currentUser ?
-            <div>
-              <p>Hello, {this.state.currentUser.username}</p>
-              <button onClick = {this.handleLogout}>Logout</button>
-            </div>
-            :
-            <Link to = "/login"> Login </Link>
-          }
-        </nav>
+        <Route path = "/profile"/>
+
         {this.state.errorText && <p className= "error"> {this.state.errorText} </p>}
         <Route path = "/login" render = {() => (
         <LoginForm handleLogin={this.handleLogin} />
@@ -87,6 +79,7 @@ class App extends Component {
         <RegisterForm handleRegister = {this.handleRegister}/>
         )} />
         <Feed />
+        </nav>
       </div>
     );
   }

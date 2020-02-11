@@ -66,11 +66,6 @@ class Feed extends Component {
 
     return (
       <div>
-        {!this.props.currentUser ?
-          <div className="restrict">
-            <h1>Please <a href="/login">login</a></h1>
-          </div>
-          :
           <div>
             <div className="feedpage-wrapper">
               <div className="feedpage-content">
@@ -96,7 +91,7 @@ class Feed extends Component {
               </div>
             </div >
           </div>
-        }
+        
       </div>
     )
   }

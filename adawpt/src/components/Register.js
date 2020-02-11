@@ -19,6 +19,7 @@ export default class RegisterForm extends Component {
 
     render() {
         return (
+            <div className="register">
             <form onSubmit={(e) => this.props.handleRegister(e, {username:this.state.username, password:this.state.password})}>
                 <h2>Register!</h2>
                 <label htmlFor= "username">Username</label>
@@ -37,6 +38,7 @@ export default class RegisterForm extends Component {
                 />
                 <input type="submit"/>              
             </form>
+            </div>
         )
     }
 }

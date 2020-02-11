@@ -33,8 +33,8 @@ form {
 
 *{padding: 0; margin: 0; box-sizing: border-box;}
 body{height: 900px;}
-
 header {
+	background: url('http://www.autodatz.com/wp-content/uploads/2017/05/Old-Car-Wallpapers-Hd-36-with-Old-Car-Wallpapers-Hd.jpg');
 	text-align: center;
 	width: 100%;
 	height: auto;
@@ -42,24 +42,29 @@ header {
 	background-attachment: fixed;
 	position: relative;
 	overflow: hidden;
-	border-radius: 0 0 85% 85% / 30%;
-	background-color: aquamarine;
+	border-radius: 0 0 75% 75% / 20%;
 }
-
 header .overlay{
 	width: 100%;
 	height: 100%;
 	padding: 50px;
+	color: #FFF;
+	background-color: #E8D3BE;
+}
+
+.header-links-container button {
+	padding: 1.5vw;
+	margin: 1.5vw;
 }
 
 h1 {
-  font-family: 'Open Sans Condensed', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 80px;
 	margin-bottom: 30px;
 }
 
 h3, p {
-  font-family: 'Open Sans Condensed', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	margin-bottom: 30px;
 }
 

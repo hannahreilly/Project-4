@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const Adoption = (props) => {
-    const { img, name, age, breed } = props.adoption.pet
+    const { img, name, age, breed } = props.adoption.dog
     return (
         <div>
             <div className = "adoption-content">

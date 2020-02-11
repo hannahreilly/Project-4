@@ -17,24 +17,35 @@ background-size: cover;
   width: 100vw;
 }
 
+.register {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 100vw;
+  }
+
 form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-width: 25%;
   background-color: rgb(238, 229, 229);
-  margin-top: 3.75vw;
+  /* margin-top: 3.75vw; */
+  margin: 3.75vw;
   padding: 3.75vw;
   border-radius: .75vw;
   min-height: 100%;
   max-width: 20%;
-  
+}
+
+form input {
+	margin: .5vw;
 }
 
 *{padding: 0; margin: 0; box-sizing: border-box;}
 body{height: 900px;}
 header {
-	background: url('http://www.autodatz.com/wp-content/uploads/2017/05/Old-Car-Wallpapers-Hd-36-with-Old-Car-Wallpapers-Hd.jpg');
+	/* background: url('http://www.autodatz.com/wp-content/uploads/2017/05/Old-Car-Wallpapers-Hd-36-with-Old-Car-Wallpapers-Hd.jpg'); */
 	text-align: center;
 	width: 100%;
 	height: auto;

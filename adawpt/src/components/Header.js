@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
 
+
 class Header extends React.Component {
 
   constructor(props) {
@@ -23,21 +24,20 @@ class Header extends React.Component {
   render() {
     return (
       <header>
-        
+
         <div className="header-container">
    
 	        <div class="overlay">
             <h1> Adopt Today
             </h1>
-              <h3>Reasons for Choosing US</h3>
+              {/* <h3>Reasons for Choosing US</h3>
 	        
-	            <button>READ MORE</button>
+	            <button>READ MORE</button> */}
             
             <nav>
           {this.props.currentUser ?
             <div className="header-links-container">
-              <Link to="/feed">Feed</Link>
-              <Link to ="/profile">Profile</Link>
+
               {this.props.currentUser.id &&
               <Link onClick={this.handleProfileClick}>Profile</Link>
               }
@@ -47,6 +47,8 @@ class Header extends React.Component {
             <div className="header-links-container">
               <button><Link to="/login">Login</Link></button>
               <button><Link to="/register">Sign Up</Link></button>
+              <button><Link to="/feed">Feed</Link></button>
+              <button><Link to ="/profile">Profile</Link></button>
             </div>
           }
           </nav>

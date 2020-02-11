@@ -2,6 +2,8 @@
 
 ## This is a website for adoption. The user will be able to create an account, login, browse dogs, select favorites, and submit an application. Post MVP: create a matching feature that matches you to dogs that fit your preferences
 
+## Goals for this project are to get more comfortable with building out back end
+
 ## https://www.petfinder.com/developers/api-docs
 
 https://imgur.com/a/d2h7RBJ
@@ -28,9 +30,9 @@ https://imgur.com/a/d2h7RBJ
 
 
 Task	            Priority	Estimated Time	Time Invested	Actual Time
-Add Create User 	L	3 hrs	2 hrs	3 hrs
-Create CRUD Actions	H	3 hrs	1 hrs	TBD
-TOTAL		            6 hrs	3 hrs	TBD
+Add Create User 	L	3 hrs	    2 hrs	    3 hrs
+Create CRUD Actions	H	    3 hrs	    1 hrs	    TBD
+TOTAL		            6 hrs	    3 hrs	    TBD
 
 ## Post MVP
 

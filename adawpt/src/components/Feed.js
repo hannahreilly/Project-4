@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
-
 class Feed extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +17,7 @@ class Feed extends Component {
 
   componentDidMount = async () => {
     try {
-      const userResponse = await axios(`https://localhost:3000`);
+      const userResponse = await axios.get(`https://localhost:3000`);
       this.setState({
         users: userResponse.data,
         apiDataLoaded: true
@@ -63,7 +62,7 @@ class Feed extends Component {
                   this.state.filteredUsers.map(user => (
                     <Link style={linkStyle} to={`/profile/${user.id}`} key={user.id}>
                       <div key={user.id} className="users">
-                        <h4>{user.first_name}</h4>
+                        <h4>{user.name}</h4>
                         <img onError={this.addDefaultSrc} src={user.profile_pic_url} alt="user" />
                       </div>
                     </Link>
@@ -73,7 +72,7 @@ class Feed extends Component {
                   this.state.users.map(user => (
                     <Link style={linkStyle} to={`/profile/${user.id}`} key={user.id}>
                       <div key={user.id} className="users">
-                        <h4>{user.first_name}</h4>
+                        <h4>{user.name}</h4>
                         <img onError={this.addDefaultSrc} src={user.profile_pic_url} alt="user" />
                       </div>
                     </Link>

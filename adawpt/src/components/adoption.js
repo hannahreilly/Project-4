@@ -1,8 +1,18 @@
 import React from 'react';
 
-
-const Adoption = (props) => {
-    const { img, name, age, breed } = props.adoption.dog
+class Adoption extends Component {
+    constructor(props) {
+      super(props);
+  
+      this.state = {
+        img: '',
+        name: '',
+        age: '',
+        filteredUsers:''
+      }
+    }
+    
+render () {
     return (
         <div>
             <div className = "adoption-content">
@@ -15,6 +25,7 @@ const Adoption = (props) => {
             </div>
         </div>
     )
+}
 }
 
 export default Adoption;

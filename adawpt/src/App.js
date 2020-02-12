@@ -72,8 +72,8 @@ class App extends Component {
         <Profile />
         <Feed />
         <nav>
-        <Route path = "/profile" component={Profile}/>
-        <Route path="/feed" component={Feed} />
+        {/* <Route path = "/profile" component={Profile}/>
+        <Route exact path="/feed" component={Feed} /> */}
         {this.state.errorText && <p className= "error"> {this.state.errorText} </p>}
         <Route path = "/login" render = {() => (
         <LoginForm handleLogin={this.handleLogin} />
@@ -81,6 +81,29 @@ class App extends Component {
         <Route path = "/register" render={() => (
         <RegisterForm handleRegister = {this.handleRegister}/>
         )} />
+          <Route path="/feed" render={(props) => (
+          <div>
+            <Feed currentUser={this.state.currentUser} />
+          </div>
+        )} />
+        {this.state.apiDataLoaded &&
+          <Route exact path="/profile/:id" render={(props) => (
+            <Profile
+              users={this.state.users}
+              userId={props.match.params.id}
+              currentUser={this.state.currentUser}
+            />
+          )} />
+        }
+        {this.state.apiDataLoaded &&
+          <Route exact path="/profile" render={(props) => (
+            <Profile
+              users={this.state.users}
+              userId={props.match.params.id}
+              currentUser={this.state.currentUser}
+            />
+          )} />
+        }
 
         </nav>
       </div>

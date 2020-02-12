@@ -82,15 +82,16 @@ h3, p {
 button {
 	border: none;
 	outline: none;
-	padding: 10px 20px;
+	width: 10%;
 	border-radius: 50px;
 	color: #333;
 	background: #fff;
-	margin-bottom: 50px;
 	box-shadow: 0 3px 20px 0 #0000003b;
+	text-decoration: none;
 }
 button:hover{
 	cursor: pointer;
+	background-color: burlywood;
 }
 
 .feedpage-content {

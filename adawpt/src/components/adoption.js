@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import './App.css';
 
 class Adoption extends Component {
     constructor(props) {

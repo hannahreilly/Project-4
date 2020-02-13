@@ -1,10 +1,11 @@
 class DogsController < ApplicationController
 
+  skip_before_action :authorize_request
     before_action :set_dog, only: [:show, :update, :destroy]
 
     # GET /dogs
     def index
-      @dogs = current_user.dogs
+      @dogs = Dog.all
       json_response(@dogs)
     end
 

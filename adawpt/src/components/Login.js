@@ -6,7 +6,7 @@ export default class LoginForm extends Component {
         super(props);
         
         this.state = {
-            username:'',
+            email:'',
             password:''
         }
     }
@@ -22,13 +22,13 @@ export default class LoginForm extends Component {
     render() {
         return (
             <div className = "login">
-            <form onSubmit={(e) => this.props.handleLogin(e, {username:this.state.username, password:this.state.password})}>
+            <form onSubmit={(e) => this.props.handleLogin(e, {email:this.state.email, password:this.state.password})}>
                 <h2>Login!</h2>
-                <label htmlFor= "username">Username</label>
+                <label htmlFor= "email">email</label>
                 <input
                     type = "text"
-                    name = "username"
-                    value = {this.state.username}
+                    name = "email"
+                    value = {this.state.email}
                     onChange = {this.handleChange}
                 />
                 <label htmlFor="password">Password</label>

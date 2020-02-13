@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom';
 
 
 class Header extends React.Component {
@@ -18,23 +18,20 @@ class Header extends React.Component {
   }
 
   handleProfileClick = () => {
-    this.props.history.push(`/myprofile`)
+    this.props.history.push(`/profile`)
   }
 
   render() {
     return (
       <header>
-
+        <link href="https://fonts.googleapis.com/css?family=Lemonada&display=swap" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css?family=Lemonada|Poppins&display=swap" rel="stylesheet"></link>
         <div className="header-container">
    
-	        <div class="overlay">
-            <h1> Adopt Today
-            </h1>
-              {/* <h3>Reasons for Choosing US</h3>
-	        
-	            <button>READ MORE</button> */}
-            
-            <nav>
+	        <div className="overlay">
+            <h1> Adopt </h1>
+        
+        <nav>
           {this.props.currentUser ?
             <div className="header-links-container">
 
@@ -47,8 +44,8 @@ class Header extends React.Component {
             <div className="header-links-container">
               <button><Link to="/login">Login</Link></button>
               <button><Link to="/register">Sign Up</Link></button>
-              <button><Link to="/feed">Feed</Link></button>
-              <button><Link to ="/profile">Profile</Link></button>
+              <button><Link to ="/profile">Profile</Link> </button>
+              <button><Link to ="/feed">Feed</Link> </button>
             </div>
           }
           </nav>

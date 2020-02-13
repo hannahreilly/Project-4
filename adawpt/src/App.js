@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {Route} from 'react-router-dom';
+import {Route, withRouter } from 'react-router-dom';
 import './App.css';
-import {loginUser, registerUser, verifyUser} from './services/api-helper';
+import {loginUser, registerUser, verifyUser, loadDogs} from './services/api-helper';
 import LoginForm from './components/Login';
 import RegisterForm from './components/Register';
 import Header from './components/Header';
@@ -17,14 +17,19 @@ class App extends Component {
     }
   }
 
+  handleDogs = async(e, dogData) => {
+    e.preventDefault();
+    const currentUser = await loadDogs(dogData);
+    this.setState({currentUser})
+  }
+
   handleLogin = async (e, loginData) => {
     e.preventDefault();
-    if(!loginData.username || !loginData.password) {
+    if(!loginData.email || !loginData.password) {
       this.setState({
-        errorText:"You must supply a username AND password"
+        errorText:"You must supply a email AND password"
       })
     } else {
-    // console.log("help me");
     const currentUser = await loginUser(loginData);
     this.setState({currentUser});
     }
@@ -34,7 +39,7 @@ class App extends Component {
     e.preventDefault();
     if(!registerData.username || !registerData.password) {
       this.setState({
-        errorText: "You must supply a username AND password ya jerk!"
+        errorText: "You must supply a username AND password please"
       })
     } else {
     const currentUser = await registerUser(registerData);
@@ -65,27 +70,29 @@ class App extends Component {
     this.handleVerify();
   }
 
-    render() {
-    return (
-      <div className="App">
-        <Header />
+render() {
+  return (
+    <div className="App">
+      <Header />
+      <Route path="/login" render={() => (
+        <LoginForm
+          handleLogin={this.handleLogin}
+        />
+      )} />
+      <Route path="/register" render={() => (
+        <RegisterForm
+          handleRegister={this.handleRegister}
+          errorText={this.state.errorText}
+        />
+      )}/>
+      <Route path="/profile" render={() => (
         <Profile />
-        <Feed />
-        <nav>
-        {/* <Route path = "/profile" component={Profile}/>
-        <Route exact path="/feed" component={Feed} /> */}
-        {this.state.errorText && <p className= "error"> {this.state.errorText} </p>}
-        <Route path = "/login" render = {() => (
-        <LoginForm handleLogin={this.handleLogin} />
-        )} />
-        <Route path = "/register" render={() => (
-        <RegisterForm handleRegister = {this.handleRegister}/>
-        )} />
-          <Route path="/feed" render={(props) => (
-          <div>
-            <Feed currentUser={this.state.currentUser} />
-          </div>
-        )} />
+      )} />
+      <Route path="/feed" render={() => (
+        <div>
+          <Feed currentUser={this.state.currentUser} />
+        </div>
+      )} />
         {this.state.apiDataLoaded &&
           <Route exact path="/profile/:id" render={(props) => (
             <Profile
@@ -95,20 +102,9 @@ class App extends Component {
             />
           )} />
         }
-        {this.state.apiDataLoaded &&
-          <Route exact path="/profile" render={(props) => (
-            <Profile
-              users={this.state.users}
-              userId={props.match.params.id}
-              currentUser={this.state.currentUser}
-            />
-          )} />
-        }
-
-        </nav>
-      </div>
-    );
-  }
+    </div>
+  );
+}
 }
 
-export default App;
+export default withRouter(App);

@@ -10,6 +10,10 @@ background-image: url('https://images.pexels.com/photos/406014/pexels-photo-4060
 background-size: cover;
 }
 
+main {
+	background-image: none;
+}
+
 .login {
   display: flex;
   align-items: center;
@@ -45,7 +49,6 @@ form input {
 *{padding: 0; margin: 0; box-sizing: border-box;}
 body{height: 900px;}
 header {
-	/* background: url('http://www.autodatz.com/wp-content/uploads/2017/05/Old-Car-Wallpapers-Hd-36-with-Old-Car-Wallpapers-Hd.jpg'); */
 	text-align: center;
 	width: 100%;
 	height: auto;
@@ -60,7 +63,8 @@ header .overlay{
 	height: 100%;
 	padding: 50px;
 	color: #FFF;
-	background-color: #E8D3BE;
+	background-color: black;
+	border: 1px solid black;
 }
 
 .header-links-container button {
@@ -69,15 +73,24 @@ header .overlay{
 }
 
 h1 {
-	font-family: 'Open Sans', sans-serif;
-	font-size: 80px;
+	font-family:'Poppins', sans-serif;
+	font-size: 70px;
 	margin-bottom: 30px;
 }
 
 h3, p {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Poppins', sans-serif;
 	margin-bottom: 30px;
 }
+
+h2 {
+	font-family: 'Poppins', sans-serif;
+}
+
+h4 {
+	font-family: 'Poppins', sans-serif;
+}
+
 
 button {
 	border: none;
@@ -99,4 +112,9 @@ button:hover{
 	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	justify-content: space-around;
 	grid-auto-flow: row dense;
+  }
+
+  .profile-div {
+	  background-color: burlywood;
+	  width: 10%;
   }

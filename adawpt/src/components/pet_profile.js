@@ -28,7 +28,7 @@ render () {
      </div> 
      <div>
         {props.pet.adoption ? 
-        `Im Adopted!! by ${props.pet.adoption.user.name}` : 
+        `Im Adopted by ${props.pet.adoption.user.name}` : 
         <button onClick={() => props.adoptDog(props.pet)}>
           Adopt Me!
         </button>}

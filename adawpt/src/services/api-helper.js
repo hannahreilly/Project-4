@@ -41,3 +41,15 @@ export const verifyUser = () => {
     api.defaults.headers.common.authorization = `Bearer ${token}`;
   }
 }
+
+export const loadDogs = async () => {
+  try {
+    const dogs = await api.get(`/dogs`);
+    this.setState({
+      dogs: dogs.data,
+      apiDataLoaded: true
+    })
+  } catch (e) {
+    console.error(e)
+  }
+}

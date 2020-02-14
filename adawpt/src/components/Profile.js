@@ -1,125 +1,118 @@
-import React, { Component } from 'react'
+import React from 'react';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+// import Footer from '../components/Footer';
 
 
-class Profile extends Component {
 
- state = {
-    isEditFormOn: false,
-    name: "",
-    username: "",
-    location: "", 
-    
- }
+const useStyles = makeStyles(theme => ({
+  icon: {
+    marginRight: theme.spacing(2),
+  },
+  heroContent: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(8, 0, 6),
+  },
+  heroButtons: {
+    marginTop: theme.spacing(4),
+  },
+  cardGrid: {
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+  },
+  card: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  cardMedia: {
+    paddingTop: '56.25%', // 16:9
+  },
+  cardContent: {
+    flexGrow: 1,
+  },
+  footer: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(6),
+  },
+}));
 
-  handleEditButton = ()=>{
-    this.setState({
-      isEditFormOn: !this.state.isEditFormOn,
-      name: this.props.user.name,
-      username: this.props.user.username,
-      location: this.props.user.location, 
-      
-    })
-  }
+const cards = [1];
 
-  handleOnChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
+export default function Album() {
+  const classes = useStyles();
 
-  handleOnSubmit = (e) => {
-    e.preventDefault()
-    fetch(`http://localhost:3000/users/${this.props.user.id}`, {
-      method: 'PATCH',
-      headers: {
-        "Authorization": localStorage.token,
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      }, 
-      body: JSON.stringify({
-        name: this.state.name,
-        username: this.state.username,
-        location: this.state.location,
-      })
+  return (
+    <React.Fragment>
+      <CssBaseline />
+      {/* <AppBar position="relative">
+        <Toolbar>
+          <CameraIcon className={classes.icon} />
+          <Typography variant="h6" color="inherit" noWrap>
+            Album layout
+          </Typography>
+        </Toolbar>
+      </AppBar> */}
+      <main>
+        {/* Hero unit */}
+        <div className={classes.heroContent}>
+          <Container maxWidth="sm">
+            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+              Your Profille
+            </Typography>
+            <Typography variant="h5" align="center" color="textSecondary" paragraph>
 
-    })
-    .then(res => res.json())
-    .then(() => {
-      this.setState({
-           isEditFormOn: false
-        }, this.props.fetchUser())
-      }
-    )
-      
-  }
-
-
-  handleDelete = ()=>{
-    fetch(`http://localhost:3000/users/${this.props.user.id}`,{
-      method: "DELETE"
-    })
-    .then(
-      this.props.logOut()
-    )
-  }
-  
-  editForm =  ()=>{
-   return (<form onChange={this.handleOnChange}>
-        <label htmlFor="name">Name:</label>
-        <input type="text" id="name" name="name" value={this.state.name}/>
-  
-        <label htmlFor="username" >Username:</label>
-        <input type="text" id="username" name="username" value={this.state.username}/>
-  
-        <label htmlFor="location">Location:</label>
-        <input type="text" id="location" name="location" value={this.state.location}/>
-    
-        <input type="submit" onClick={(event) => this.handleOnSubmit(event)}/>
-    </form>)
-  }
-
-  profile = ()=>{
-    return (<div className="profile-div">
-         <div className="profile-info">
-          <h2>
-            {this.props.currentUser.name}
-          </h2>
-          <p> 
-            <b className="bold">Location:</b> 
-            {this.props.currentUser.location}
-          </p>
-          <p> 
-            <b className="bold">Username:</b> 
-            {this.props.currentUser.username}
-          </p>
-          <button onClick={this.handleEditButton} className="profile-edit-button">
-            { this.state.isEditFormOn?
-              "Profile" : "Edit me"
-            }
-
-         </button>
-          </div>
-      </div>)
-  }
- 
- render() {
-  if (localStorage.name){
-    return(
-      <div className="profile-item">
-        <p>hello</p>
-     
-      <div className="name">
-      <h4>{this.props.name}</h4>
-      </div>
-
-      <div className="location">
-      <h4>{this.props.location}</h4>
-      </div>
-
-      </div>
-      )
-  }
- }
+            </Typography>
+            <div className={classes.heroButtons}>
+              <Grid container spacing={2} justify="center">
+                <Grid item>
+                </Grid>
+              </Grid>
+            </div>
+          </Container>
+        </div>
+        <Container className={classes.cardGrid} maxWidth="md">
+          {/* End hero unit */}
+          <Grid container spacing={4}>
+            {cards.map(card => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image="https://source.unsplash.com/random"
+                    title="Image title"
+                  />
+                  <CardContent className={classes.cardContent}>
+            
+                    <Typography>
+                      <p>Your Name</p>
+                      <p>Your Location</p>
+                      <p>Your preferred breeds</p>
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" color="primary">
+                      Edit
+                    </Button>
+                    <Button size="small" color="primary">
+                      View
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+        {/* <Footer /> */}
+      </main>
+    </React.Fragment>
+  );
 }
-
-export default Profile;

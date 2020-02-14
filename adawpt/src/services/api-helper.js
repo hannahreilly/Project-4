@@ -42,14 +42,28 @@ export const verifyUser = () => {
   }
 }
 
+//Get the dog
 export const loadDogs = async () => {
   try {
     const dogs = await api.get(`/dogs`);
     this.setState({
-      dogs: dogs.data,
+      dogs: dogs.data.img,
       apiDataLoaded: true
     })
   } catch (e) {
     console.error(e)
   }
+}
+
+//POST THE Dog
+export const postDogs = async (postData) => {
+  const resp = await api.post('/dogs', postData);
+  return resp.data;
+}
+
+// UPDATE the Dog
+export const putDogs = async (id, postData) => {
+  const resp = await api.put(`/dogs/${id}`, postData);
+  const dogs = {id: id, title: resp.data.data}
+  return dogs;
 }

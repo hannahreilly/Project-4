@@ -93,9 +93,11 @@ export default function Album() {
                   <CardContent className={classes.cardContent}>
             
                     <Typography>
+                      <div className="profile-details">
                       <p>Your Name</p>
                       <p>Your Location</p>
                       <p>Your preferred breeds</p>
+                      </div>
                     </Typography>
                   </CardContent>
                   <CardActions>

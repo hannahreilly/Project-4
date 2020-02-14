@@ -11,7 +11,6 @@ export default class LoginForm extends Component {
         }
     }
 
-
     handleChange = (e) => {
         const {name,value} = e.target;
         this.setState({
@@ -39,8 +38,11 @@ export default class LoginForm extends Component {
                     onChange = {this.handleChange}
                 />
                 <input type="submit"/>
-                <Link to = "/register">Register</Link>              
+                         
             </form>
+            <button> 
+                    <Link to = "/register">Not Registered? </Link> 
+                </button> 
             </div>
         )
     }

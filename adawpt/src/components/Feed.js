@@ -107,7 +107,8 @@ export default function Album(props) {
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random/dog"
+                    image="/images/image1.jpg"
+
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>

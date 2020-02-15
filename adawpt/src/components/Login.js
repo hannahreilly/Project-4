@@ -40,9 +40,9 @@ export default class LoginForm extends Component {
                 <input type="submit"/>
                          
             </form>
-            <button> 
-                    <Link to = "/register">Not Registered? </Link> 
-                </button> 
+             
+                    <Link to = "/register"><button>Not Registered? </button> </Link> 
+                
             </div>
         )
     }

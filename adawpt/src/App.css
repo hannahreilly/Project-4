@@ -95,7 +95,7 @@ h4 {
 button {
 	border: none;
 	outline: none;
-	width: 7vw;
+	width: 8vw;
 	/* height: 3vw; */
 	border-radius: 50px;
 	color: #333;
@@ -103,6 +103,7 @@ button {
 	box-shadow: 0 3px 20px 0 #0000003b;
 	text-decoration: none;
 	text-align: center;
+	font-size: 14px;
 }
 
 a {
@@ -113,27 +114,9 @@ a {
 
 button:hover{
 	cursor: pointer;
+	color: cornflowerblue;
 	background-color: burlywood;
 }
-
-a:link {
-	color: red;
-  }
-  
-  /* visited link */
-  a:visited {
-	color: green;
-  }
-  
-  /* mouse over link */
-  a:hover {
-	color: hotpink;
-  }
-  
-  /* selected link */
-  a:active {
-	color: blue;
-  }
 
   .profile-div {
 	  background-color: burlywood;

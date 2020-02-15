@@ -42,16 +42,15 @@ class Header extends React.Component {
             </div>
             :
             <div className="header-links-container">
-              <button><Link to="/login">Login</Link></button>
-              <button><Link to="/register">Sign Up</Link></button>
-              <button><Link to ="/profile">Profile</Link> </button>
-              <button><Link to ="/feed">Feed</Link> </button>
+              <Link to="/login"><button>Login</button></Link>
+              <Link to="/register"><button>Sign Up</button></Link>
+              <Link to ="/profile"><button>Profile</button></Link> 
+              <Link to ="/feed"><button>Feed</button></Link> 
             </div>
           }
           </nav>
         </div>
         </div>
-        
         </header>
       
     )

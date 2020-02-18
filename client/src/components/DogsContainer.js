@@ -50,8 +50,21 @@ class DogsContainer extends Component {
   render() {
     return (
       <div>
+        <Route exact path="/dogs/:id" render={(props) => (
+          <PetProfile
+            dogId={props.match.params.id}
+            dogs={this.state.dogs}
+          />
+        )} />
+        <Route exact path="/dogs/new" render={() => (
+          <CreateDog
+            createDog={this.createDog}
+          />
+        )} />
+
         {
           this.state.dogs.map(dog => (
+            
             <div className = "DogContainer">
               <div className = "dog-details">
                 <img src={dog.img} alt="dog pic"/> 
@@ -59,6 +72,7 @@ class DogsContainer extends Component {
                 <h3>Breed: {dog.breed}</h3>
                 <h3>Age: {dog.age}</h3>
                 <h3>Location: {dog.location}</h3>
+                
                     <Link to={`/dogs/${dog.id}/pet_profile`}>
                     <Button size="small">
                         View 
@@ -70,30 +84,23 @@ class DogsContainer extends Component {
                           Edit
                       </Button>
                     </Link>
+            
+        <Route exact path="/dogs/:id/edit" render={(props) => (
+          
+          <UpdatePetProfile
+            dogs={this.state.dogs}
+            updateDog={this.updateDog}
+            dogId={props.match.params.id}
+          />
+        
+        )} />
                     
             </div>
             </div>
           ))
           
         }
-        <Route exact path="/dogs/:id" render={(props) => (
-          <PetProfile
-            dogId={props.match.params.id}
-            dogs={this.state.dogs}
-          />
-        )} />
-        <Route path="/dogs/new" render={() => (
-          <CreateDog
-            createDog={this.createDog}
-          />
-        )} />
-        <Route path="/dogs/:id/edit" render={(props) => (
-          <UpdatePetProfile
-            dogs={this.state.dogs}
-            updateDog={this.updateDog}
-            dogId={props.match.params.id}
-          />
-        )} />
+
       </div>
     )
   }

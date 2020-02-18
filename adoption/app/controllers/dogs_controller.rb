@@ -22,14 +22,14 @@ class DogsController < ApplicationController
 
     # PUT /dogs/:id
     def update
-      @dog.update(dog_params)
-      json_response(status: 'SUCCESS', message: 'updated the dog', data: @dog.title)
+      @dog.update(dogs_params)
+      json_response(status: 'SUCCESS', message: 'updated the dog', data: @dog.name)
     end
 
     # DELETE /dogs/:id
     def destroy
       @dog.destroy
-      json_response(status: 'SUCCESS', message: 'deleted the dog', data: @dog.title)
+      json_response(status: 'SUCCESS', message: 'deleted the dog', data: @dog.name)
 
     end
 
@@ -37,7 +37,7 @@ class DogsController < ApplicationController
 
     def dogs_params
       # whitelist params
-      params.permit(:title, :created_by)
+      params.permit(:name, :location)
     end
 
     def set_dog

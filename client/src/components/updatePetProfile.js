@@ -52,7 +52,7 @@ export default class UpdatePetProfile extends Component {
           value={this.state.name}
           onChange={this.handleChange}
         />
-        <label htmlFor="location">location</label>
+        <label htmlFor="location">Location</label>
           <input
           type="text"
           name="location"

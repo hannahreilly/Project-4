@@ -64,7 +64,7 @@ class DogsContainer extends Component {
 
         {
           this.state.dogs.map(dog => (
-            
+
             <div className = "DogContainer">
               <div className = "dog-details">
                 <img src={dog.img} alt="dog pic"/> 
@@ -84,9 +84,8 @@ class DogsContainer extends Component {
                           Edit
                       </Button>
                     </Link>
-            
+
         <Route exact path="/dogs/:id/edit" render={(props) => (
-          
           <UpdatePetProfile
             dogs={this.state.dogs}
             updateDog={this.updateDog}

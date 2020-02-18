@@ -20,6 +20,7 @@ export default class CreateDog extends Component {
         e.preventDefault();
         this.props.CreateDog(this.state)
       }}>
+        <div className = "new-dog">
         <label htmlFor="name">name</label>
         <input
           type="text"
@@ -27,12 +28,28 @@ export default class CreateDog extends Component {
           value={this.state.name}
           onChange={this.handleChange}
         />
-        <input
+        <label htmlFor="location">Location</label>
+          <input
+          type="text"
+          name="location"
+          value={this.state.location}
+          onChange={this.handleChange}
+        />
+        <label htmlFor="breed">Breed</label>
+          <input
           type="text"
           name="breed"
           value={this.state.breed}
           onChange={this.handleChange}
         />
+        <label htmlFor="age">Age</label>
+          <input
+          type="text"
+          name="age"
+          value={this.state.age}
+          onChange={this.handleChange}
+        />
+        </div>
         <button>Submit</button>
       </form>
     )

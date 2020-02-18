@@ -142,8 +142,7 @@ button:hover{
   .DogContainer {
 	padding: 10px;
 	margin: 10px;
-	/* grid-column-gap: 30px; */
-  }
+	}
   
   .dog-details {
 	grid-template-columns: repeat(3, 1fr);
@@ -164,6 +163,13 @@ button:hover{
 	  margin: 5px;
   }
 
+  .new-dog{
+	  display: flex;
+	  flex-direction: column;
+	  text-align: center;
+	  padding: 1vw;
+	  margin: 1vw;
+  }
 
   input {
 	  width: 16vw;

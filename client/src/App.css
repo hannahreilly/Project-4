@@ -30,14 +30,14 @@ main {
 
 form {
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-  min-width: 25%;
+  min-width: 60%;
   background-color: rgb(238, 229, 229);
-  /* margin-top: 3.75vw; */
-  margin: 3.75vw;
-  padding: 3.75vw;
   border-radius: .75vw;
+  padding: 1vw;
+  margin: 2vw;
   min-height: 100%;
   max-width: 20%;
 }
@@ -150,17 +150,18 @@ button:hover{
 
   .DogContainer {
 	display: grid;
-	grid-template-columns: auto auto auto;
-	/* background-color: lightgrey; */
+	grid-template-rows: auto;
+	/* grid-template-rows: repeat(1, 3xfr); */
 	padding: 10px;
 	margin: 10px;
-	grid-column-gap: 30px;
+	/* grid-column-gap: 30px; */
   }
   
   .dog-details {
-	/* grid-template-columns: auto auto auto; */
 	grid-column-start: 1;
 	grid-column-end: 3;
+	grid-template-rows: repeat(1, 3fr);
+	grid-auto-rows: 100px 200px;
 	background-color: lightgray;
 	border: 2px solid black;
 	border-radius: 10px;
@@ -170,6 +171,15 @@ button:hover{
 	height: auto;
   }
 
+  .dog-details:hover {
+	cursor: pointer;
+  }
+
   .DogContainer Button{
 	  margin: 5px;
   }
+/* 
+  form {
+	  display: flex;
+	  width: 50%;
+  } */

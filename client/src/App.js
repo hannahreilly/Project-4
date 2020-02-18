@@ -91,7 +91,7 @@ render() {
       <Route path="/profile" render={() => (
         <Profile />
       )} />
-      <Route path="/feed" render={() => (
+      <Route path="/dogs" render={() => (
         <div>
           <DogsContainer currentUser={this.state.currentUser} />
         </div>

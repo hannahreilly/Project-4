@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import EditableLabel from 'react-inline-editing';
+
 
 export default class UpdatePetProfile extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      title: ""
+      name: "",
+      location: "",
+      breed: "",
+      age: ""
     }
   }
 
@@ -40,7 +45,6 @@ export default class UpdatePetProfile extends Component {
         e.preventDefault();
         this.props.updateDog(this.props.dogId, this.state)
       }}>
-        
         <label htmlFor="name">name</label>
         <input
           type="text"
@@ -48,6 +52,39 @@ export default class UpdatePetProfile extends Component {
           value={this.state.name}
           onChange={this.handleChange}
         />
+        <label htmlFor="location">location</label>
+          <input
+          type="text"
+          name="location"
+          value={this.state.location}
+          onChange={this.handleChange}
+        />
+        <label htmlFor="breed">Breed</label>
+          <input
+          type="text"
+          name="breed"
+          value={this.state.breed}
+          onChange={this.handleChange}
+        />
+        <label htmlFor="age">Age</label>
+          <input
+          type="text"
+          name="age"
+          value={this.state.age}
+          onChange={this.handleChange}
+        />
+                <EditableLabel 
+                text="Edit Pet Profile"
+                labelClassName='myLabelClass'
+                inputClassName='myInputClass'
+                inputWidth='200px'
+                inputHeight='25px'
+                inputMaxLength='50'
+                labelFontWeight='bold'
+                inputFontWeight='bold'
+                onFocus={this._handleFocus}
+                onFocusOut={this._handleFocusOut}
+            />
         <button>Submit</button>
       </form>
     )

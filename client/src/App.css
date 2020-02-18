@@ -1,0 +1,175 @@
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+/* background-image: url('https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); */
+background-size: cover;
+}
+
+main {
+	background-image: none;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.register {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 100vw;
+  }
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 25%;
+  background-color: rgb(238, 229, 229);
+  /* margin-top: 3.75vw; */
+  margin: 3.75vw;
+  padding: 3.75vw;
+  border-radius: .75vw;
+  min-height: 100%;
+  max-width: 20%;
+}
+
+form input {
+	margin: .5vw;
+}
+
+*{padding: 0; margin: 0; box-sizing: border-box;}
+body{height: 900px;}
+header {
+	text-align: center;
+	width: 100%;
+	height: auto;
+	background-size: cover;
+	background-attachment: fixed;
+	position: relative;
+	overflow: hidden;
+	border-radius: 0 0 75% 75% / 20%;
+}
+
+header .overlay{
+	width: 100%;
+	height: 100%;
+	padding: 50px;
+	color: #FFF;
+	background-image: url('https://images.pexels.com/photos/215957/pexels-photo-215957.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+	/* background-position-x: center; */
+	background-position: center;
+	/* background-color: black; */
+	border: 1px solid black;
+}
+
+.header-links-container button {
+	padding: 1.5vw;
+	margin: 1.5vw;
+}
+
+h1 {
+	font-family:'Poppins', sans-serif;
+	font-size: 70px;
+	margin-bottom: 30px;
+}
+
+h3, p {
+	font-family: 'Poppins', sans-serif;
+	margin-bottom: 30px;
+}
+
+h3 {
+	font-family: 'Poppins', sans-serif;
+	text-align: center;	
+	margin: 10px;
+}
+
+h2 {
+	font-family: 'Poppins', sans-serif;
+}
+
+h4 {
+	font-family: 'Poppins', sans-serif;
+}
+
+
+button {
+	border: none;
+	outline: none;
+	width: 8vw;
+	/* height: 3vw; */
+	border-radius: 50px;
+	color: #333;
+	background: #fff;
+	box-shadow: 0 3px 20px 0 #0000003b;
+	text-decoration: none;
+	text-align: center;
+	font-size: 14px;
+}
+
+a {
+	text-decoration: none;
+	text-align: center;
+	color: black;
+}
+
+button:hover{
+	cursor: pointer;
+	color: cornflowerblue;
+	background-color: burlywood;
+}
+
+  .profile-div {
+	  background-color: burlywood;
+	  width: 10%;
+  }
+
+  img {
+	width: 40%;
+	height: auto;
+	padding: 5px auto;
+	margin: 5px auto;
+  }
+
+  /* .DogContainer {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	justify-content: space-around;
+	grid-auto-flow: row dense;
+	transition: all 0.5s ease-in-out;
+  } */
+
+  .DogContainer {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	/* background-color: lightgrey; */
+	padding: 10px;
+	margin: 10px;
+	grid-column-gap: 30px;
+  }
+  
+  .dog-details {
+	/* grid-template-columns: auto auto auto; */
+	grid-column-start: 1;
+	grid-column-end: 3;
+	background-color: lightgray;
+	border: 2px solid black;
+	border-radius: 10px;
+	padding: 10px;
+	text-align: center;
+	width: 40%;
+	height: auto;
+  }
+
+  .DogContainer Button{
+	  margin: 5px;
+  }

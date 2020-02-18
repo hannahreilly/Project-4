@@ -32,14 +32,13 @@ form {
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
   min-width: 60%;
   background-color: rgb(238, 229, 229);
   border-radius: .75vw;
   padding: 1vw;
   margin: 2vw;
   min-height: 100%;
-  max-width: 20%;
+  /* max-width: 20%; */
 }
 
 form input {
@@ -105,8 +104,8 @@ h4 {
 button {
 	border: none;
 	outline: none;
-	width: 8vw;
-	/* height: 3vw; */
+	width: 10vw;
+	padding: 5px;
 	border-radius: 50px;
 	color: #333;
 	background: #fff;
@@ -134,36 +133,22 @@ button:hover{
   }
 
   img {
-	width: 40%;
+	width: 100%;
 	height: auto;
 	padding: 5px auto;
 	margin: 5px auto;
   }
 
-  /* .DogContainer {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-	justify-content: space-around;
-	grid-auto-flow: row dense;
-	transition: all 0.5s ease-in-out;
-  } */
-
   .DogContainer {
-	display: grid;
-	grid-template-rows: auto;
-	/* grid-template-rows: repeat(1, 3xfr); */
 	padding: 10px;
 	margin: 10px;
 	/* grid-column-gap: 30px; */
   }
   
   .dog-details {
-	grid-column-start: 1;
-	grid-column-end: 3;
-	grid-template-rows: repeat(1, 3fr);
-	grid-auto-rows: 100px 200px;
+	grid-template-columns: repeat(3, 1fr);
+	grid-auto-rows: 100px 100px;
 	background-color: lightgray;
-	border: 2px solid black;
 	border-radius: 10px;
 	padding: 10px;
 	text-align: center;
@@ -178,8 +163,9 @@ button:hover{
   .DogContainer Button{
 	  margin: 5px;
   }
-/* 
-  form {
-	  display: flex;
-	  width: 50%;
-  } */
+
+
+  input {
+	  width: 16vw;
+	  height: 2vw;
+  }

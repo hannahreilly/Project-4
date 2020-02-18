@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-
 class Header extends React.Component {
 
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   handleClick = (e) => {
     e.preventDefault();
@@ -46,6 +45,7 @@ class Header extends React.Component {
               <Link to="/register"><button>Sign Up</button></Link>
               <Link to ="/profile"><button>Profile</button></Link> 
               <Link to ="/dogs"><button>Browse</button></Link> 
+              <Link to={`/dogs/new`}> <button size="small">Post a Dog</button></Link>
             </div>
           }
           </nav>

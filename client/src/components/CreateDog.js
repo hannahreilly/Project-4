@@ -5,7 +5,7 @@ export default class CreateDog extends Component {
     super(props);
 
     this.state = {
-      name: ""
+      title: ""
     }
   }
 
@@ -25,6 +25,12 @@ export default class CreateDog extends Component {
           type="text"
           name="name"
           value={this.state.name}
+          onChange={this.handleChange}
+        />
+        <input
+          type="text"
+          name="breed"
+          value={this.state.breed}
           onChange={this.handleChange}
         />
         <button>Submit</button>

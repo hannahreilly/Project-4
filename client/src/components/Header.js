@@ -45,7 +45,7 @@ class Header extends React.Component {
               <Link to="/login"><button>Login</button></Link>
               <Link to="/register"><button>Sign Up</button></Link>
               <Link to ="/profile"><button>Profile</button></Link> 
-              <Link to ="/feed"><button>Browse</button></Link> 
+              <Link to ="/dogs"><button>Browse</button></Link> 
             </div>
           }
           </nav>

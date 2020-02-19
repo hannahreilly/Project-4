@@ -1,4 +1,4 @@
-// import Link from '@material-ui/core/Link';
+// // import Link from '@material-ui/core/Link';
 // import React from 'react';
 // import Typography from '@material-ui/core/Typography';
 
@@ -7,11 +7,6 @@
 //         <div>
 //       <Typography variant="body2" color="textSecondary" align="center">
 //         {'Copyright © '}
-//         <Link color="inherit" href="https://material-ui.com/">
-//           Your Website
-//         </Link>{' '}
-//         {new Date().getFullYear()}
-//         {'.'}
 //       </Typography>
      
 //          <footer>
@@ -29,5 +24,5 @@
 
 
 
-  export default Copyright;
+//   export default Copyright;
   

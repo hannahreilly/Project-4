@@ -68,3 +68,9 @@ export const putDogs = async (id, postData) => {
   const dogs = {id: id, title: resp.data.data}
   return dogs;
 }
+
+//DELETE the Dog
+export const deleteDogs = async (id) => {
+  const resp = await api.delete(`/dogs/${id}`);
+  return resp.data;
+}

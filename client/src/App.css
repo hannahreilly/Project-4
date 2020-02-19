@@ -157,7 +157,8 @@ button:hover{
 	}
   
   .dog-details {
-	background-color: lightgray;
+	/* background-color: lightgray; */
+	border-top: lightslategrey;
 	border-radius: 10px;
 	padding: 3vw;
 	text-align: center;

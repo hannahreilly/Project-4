@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import EditableLabel from 'react-inline-editing';
 
 
 export default class UpdatePetProfile extends Component {
@@ -73,18 +72,6 @@ export default class UpdatePetProfile extends Component {
           value={this.state.age}
           onChange={this.handleChange}
         />
-                <EditableLabel 
-                text="Edit Pet Profile"
-                labelClassName='myLabelClass'
-                inputClassName='myInputClass'
-                inputWidth='200px'
-                inputHeight='25px'
-                inputMaxLength='50'
-                labelFontWeight='bold'
-                inputFontWeight='bold'
-                onFocus={this._handleFocus}
-                onFocusOut={this._handleFocusOut}
-            />
         <button>Submit</button>
       </form>
     )

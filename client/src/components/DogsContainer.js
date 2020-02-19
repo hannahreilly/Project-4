@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, withRouter, Link } from 'react-router-dom';
-import { loadDogs, postDogs, putDogs, verifyUser } from '../services/api-helper';
+import { loadDogs, postDogs, putDogs, verifyUser, deleteDogs } from '../services/api-helper';
 // import DogList from './Feed';
 import PetProfile from './Pet_Profile';
 import CreateDog from './CreateDog';
@@ -47,9 +47,19 @@ class DogsContainer extends Component {
     this.props.history.push("/dogs");
   }
 
+  // DELETE the Dog
+  deleteDog = async (id) => {
+    const deletedDog = await deleteDogs(id);
+    const tempDogs = this.state.dogs.filter(dog => dog.id !== id)
+    this.setState({ 
+      dogs: tempDogs
+    })
+    this.props.history.push("/dogs");
+  }
+
   render() {
     return (
-      <div>
+      <div className="dog-wrapper">
         <Route exact path="/dogs/:id" render={(props) => (
           <PetProfile
             dogId={props.match.params.id}
@@ -61,6 +71,11 @@ class DogsContainer extends Component {
             createDog={this.createDog}
           />
         )} />
+        {/* <Route exact path="/dogs/delete" render={() => (
+          <DeleteDog
+            deleteDog={this.deleteDog}
+          />
+        )} /> */}
 
         {
           this.state.dogs.map(dog => (
@@ -73,17 +88,20 @@ class DogsContainer extends Component {
                 <h3>Age: {dog.age}</h3>
                 <h3>Location: {dog.location}</h3>
                 
-                    <Link to={`/dogs/${dog.id}/pet_profile`}>
+                    {/* <Link to={`/dogs/${dog.id}/profile`}>
                     <Button size="small">
                         View 
                     </Button>
-                    </Link>
+                    </Link> */}
 
                     <Link to={`/dogs/${dog.id}/edit`}>
                       <Button size="small">
                           Edit
                       </Button>
                     </Link>
+                    <Button onClick={() => this.deleteDog(dog.id)} size="small">
+                        Delete
+                    </Button>
 
         <Route exact path="/dogs/:id/edit" render={(props) => (
           <UpdatePetProfile

@@ -42,7 +42,7 @@ export default class UpdatePetProfile extends Component {
     return (
       <form onSubmit={(e) => {
         e.preventDefault();
-        this.props.updateDog(this.props.dogId, this.state)
+        this.props.postDogs(this.props.title, this.state)
       }}>
         <label htmlFor="name">name</label>
         <input

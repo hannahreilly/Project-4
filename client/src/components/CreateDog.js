@@ -5,7 +5,11 @@ export default class CreateDog extends Component {
     super(props);
 
     this.state = {
-      title: ""
+      
+      name: "",
+      location: "",
+      age: "",
+      breed: ""
     }
   }
 
@@ -18,7 +22,7 @@ export default class CreateDog extends Component {
     return (
       <form onSubmit={(e) => {
         e.preventDefault();
-        this.props.CreateDog(this.state)
+        this.props.createDog(this.state)
       }}>
         <div className = "new-dog">
         <label htmlFor="name">name</label>

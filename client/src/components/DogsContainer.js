@@ -71,15 +71,9 @@ class DogsContainer extends Component {
             createDog={this.createDog}
           />
         )} />
-        {/* <Route exact path="/dogs/delete" render={() => (
-          <DeleteDog
-            deleteDog={this.deleteDog}
-          />
-        )} /> */}
 
         {
           this.state.dogs.map(dog => (
-
             <div className = "DogContainer">
               <div className = "dog-details">
                 <img src={dog.img} alt="dog pic"/> 
@@ -103,13 +97,18 @@ class DogsContainer extends Component {
                         Delete
                     </Button>
 
-        <Route exact path="/dogs/:id/edit" render={(props) => (
-          <UpdatePetProfile
-            dogs={this.state.dogs}
-            updateDog={this.updateDog}
-            dogId={props.match.params.id}
-          />
-        
+                    <Link to={`dogs/${dog.id}/adoption`}> 
+                    <Button size="small">Application
+                    </Button>
+                    </Link>
+
+
+                  <Route exact path="/dogs/:id/edit" render={(props) => (
+                    <UpdatePetProfile
+                      dogs={this.state.dogs}
+                      updateDog={this.updateDog}
+                      dogId={props.match.params.id}
+                    />
         )} />
                     
             </div>

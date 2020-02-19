@@ -1,32 +1,79 @@
 import React, { Component } from 'react';
-import './App.css';
 
-class Adoption extends Component {
-    constructor(props) {
-      super(props);
-  
-      this.state = {
-        img: '',
-        name: '',
-        age: '',
-        filteredUsers:''
-      }
+
+export default class Adoption extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: "",
+      address: "",
+      breed: "",
+      age: ""
     }
-    
-render () {
-    return (
-        <div>
-            <div className = "adoption-content">
-                <div className = "adoption-img-wrapper">
-                    <img className="adoption-img"src = {img}/>
-                </div>
-            <h4> <span>Pet Name: </span> {name} </h4>
-            <h4> <span>Pet Breed: </span> {breed} </h4>
-            <h4> <span>Pet Age: </span> {age} </h4>
-            </div>
-        </div>
-    )
-}
-}
+  }
 
-export default Adoption;
+  setFormData = () => {
+    if (this.props.dogs.length) {
+      console.log(this.props.dogs);
+      const { title } = this.props.dogs.find(dog => {
+        return parseInt(dog.id) === parseInt(this.props.dogId)
+      })
+      this.setState({ title })
+    }
+  }
+
+  componentDidMount() {
+    this.setFormData();
+  }
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.dogs !== this.props.dogs) {
+      this.setFormData();
+    }
+  }
+
+  render() {
+    return (
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        this.props.postDogs(this.props.title, this.state)
+      }}>
+        <label htmlFor="name">name</label>
+        <input
+          type="text"
+          name="name"
+          value={this.state.name}
+          onChange={this.handleChange}
+        />
+        <label htmlFor="location">Location</label>
+          <input
+          type="text"
+          name="location"
+          value={this.state.location}
+          onChange={this.handleChange}
+        />
+        <label htmlFor="breed">Breed</label>
+          <input
+          type="text"
+          name="breed"
+          value={this.state.breed}
+          onChange={this.handleChange}
+        />
+        <label htmlFor="age">Age</label>
+          <input
+          type="text"
+          name="age"
+          value={this.state.age}
+          onChange={this.handleChange}
+        />
+        <button>Submit</button>
+      </form>
+    )
+  }
+}

@@ -5,6 +5,7 @@ import { loadDogs, postDogs, putDogs, verifyUser, deleteDogs } from '../services
 import PetProfile from './Pet_Profile';
 import CreateDog from './CreateDog';
 import UpdatePetProfile from './updatePetProfile';
+import Adoption from './adoption';
 import Button from '@material-ui/core/Button';
 
 
@@ -97,11 +98,19 @@ class DogsContainer extends Component {
                         Delete
                     </Button>
 
-                    <Link to={`dogs/${dog.id}/adoption`}> 
+                    <Link to={`/${dog.id}/adoption`}> 
                     <Button size="small">Application
                     </Button>
                     </Link>
 
+                    <Route exact path="/dogs/:id/adoption" render={(props) => (
+                    <Adoption
+                      // dogs={this.state.name}
+                      // updateDog={this.updateDog}
+                      // dogId={props.match.params.id}
+                    />
+                    
+                    )} />
 
                   <Route exact path="/dogs/:id/edit" render={(props) => (
                     <UpdatePetProfile

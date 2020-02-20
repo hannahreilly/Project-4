@@ -9,7 +9,8 @@ export default class CreateDog extends Component {
       name: "",
       location: "",
       age: "",
-      breed: ""
+      breed: "",
+      img: ""
     }
   }
 
@@ -24,6 +25,7 @@ export default class CreateDog extends Component {
         e.preventDefault();
         this.props.createDog(this.state)
       }}>
+        <h3> Want to Sell a Dog?</h3>
         <div className = "new-dog">
         <label htmlFor="name">name</label>
         <input
@@ -53,6 +55,7 @@ export default class CreateDog extends Component {
           value={this.state.age}
           onChange={this.handleChange}
         />
+        
         </div>
         <button>Submit</button>
       </form>

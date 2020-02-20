@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 
 export default class LoginForm extends Component {
@@ -38,11 +39,11 @@ export default class LoginForm extends Component {
                     value = {this.state.password}
                     onChange = {this.handleChange}
                 />
-                <input type="submit"/>
+                <Button type="submit">Submit</Button>
                          
             </form>
              
-                    <Link to = "/register"><button>Not Registered? </button> </Link> 
+                    <Link to = "/register"><Button>Not Registered? </Button> </Link> 
                 
             </div>
         )

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Button from '@material-ui/core/Button';
 
 
 
@@ -37,7 +38,8 @@ export default class RegisterForm extends Component {
                     value = {this.state.password}
                     onChange = {this.handleChange}
                 />
-                <input type="submit"/>              
+
+                <Button type="submit">Submit</Button>              
             </form>
             </div>
         )

@@ -43,9 +43,9 @@ class Header extends React.Component {
             <div className="header-links-container">
               <Link to="/login"><button>Login</button></Link>
               <Link to="/register"><button>Sign Up</button></Link>
-              <Link to ="/profile"><button>Profile</button></Link> 
+              {/* <Link to ="/profile"><button>Profile</button></Link>  */}
               <Link to ="/dogs"><button>Browse</button></Link> 
-              <Link to={`/dogs/new`}> <button size="small">Post a Dog</button></Link>
+              <Link to={`/dogs/new`}> <button size="small">Selling?</button></Link>
             </div>
           }
           </nav>

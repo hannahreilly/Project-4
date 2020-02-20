@@ -6,7 +6,8 @@ import LoginForm from './components/Login';
 import RegisterForm from './components/Register';
 import Header from './components/Header';
 import Profile from './components/Profile';
-import DogsContainer from './components/DogsContainer'
+import DogsContainer from './components/DogsContainer';
+import Adoption from './components/adoption';
 
 class App extends Component {
   constructor(props){
@@ -90,6 +91,11 @@ render() {
       )}/>
       <Route path="/profile" render={() => (
         <Profile />
+      )} />
+      <Route path="/adoption" render={() => (
+        <div> 
+        <Adoption />
+        </div>
       )} />
       <Route path="/dogs" render={() => (
         <div>

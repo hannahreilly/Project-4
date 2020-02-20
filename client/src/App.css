@@ -41,11 +41,14 @@ form {
   padding: 4vw;
   margin: 1vw;
   min-height: 100%;
-  /* max-width: 20%; */
+  background-size: contain;
+  max-width: 19vw;
 }
 
 form input {
 	margin: .5vw;
+	width: 13vw;
+	height: 2vw;
 }
 
 *{padding: 0; margin: 0; box-sizing: border-box;}
@@ -135,9 +138,9 @@ button:hover{
   }
 
   img {
-	background-size: contain;
-	width: 65%;
-	height: auto;
+	object-fit: cover;
+	width: 15vw;
+	height: 25vh;
 	padding: 5px auto;
 	margin: 5px auto;
   }
@@ -167,8 +170,30 @@ button:hover{
 	border-radius: 10px;
 	padding: 3vw;
 	text-align: center;
-	height: auto;
-	width: auto;
+	height: 90vh;
+	width: 27vw;
+	/* background-color: red; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+  }
+
+
+  .words {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  flex-direction: column;
+  }
+
+  .words div{
+	font-family:'Poppins', sans-serif;
+	font-size: 25px;
+	  width: 19vw;
+	  height: 5vh;
+	  margin: 2vh;
+	  /* background-color: royalblue; */
   }
 
   .dog-details:hover {
@@ -219,4 +244,16 @@ button:hover{
 		text-align: center;
 		width: 100%;
 		height: auto;
+	}
+
+
+	#dogImageForm {
+		height: 20vh;
+		width: 20vh;
+		background-color: gray;
+		border-radius: 50%;
+	}
+
+	.awesome-button:visted {
+		color: lightblue;
 	}

@@ -17,6 +17,7 @@ export default class Adoption extends Component {
   render() {
     return (
         <form>
+            <div>Hi</div>
         <label>
           Name:
           <input type="text" name="name" />

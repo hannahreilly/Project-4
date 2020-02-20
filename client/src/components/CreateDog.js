@@ -27,6 +27,15 @@ export default class CreateDog extends Component {
       }}>
         <h3> Want to Sell a Dog?</h3>
         <div className = "new-dog">
+        
+        <img id="dogImageForm" src={this.state.img} />
+        <label htmlFor="location">Image</label>
+        <input
+          type="text"
+          name="img"
+          value={this.state.img}
+          onChange={this.handleChange}
+        />
         <label htmlFor="name">name</label>
         <input
           type="text"
@@ -55,7 +64,7 @@ export default class CreateDog extends Component {
           value={this.state.age}
           onChange={this.handleChange}
         />
-        
+
         </div>
         <button>Submit</button>
       </form>

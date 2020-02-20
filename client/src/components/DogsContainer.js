@@ -5,8 +5,10 @@ import { loadDogs, postDogs, putDogs, verifyUser, deleteDogs } from '../services
 import PetProfile from './Pet_Profile';
 import CreateDog from './CreateDog';
 import UpdatePetProfile from './updatePetProfile';
-import Adoption from './adoption';
+// import Adoption from './adoption';
 import Button from '@material-ui/core/Button';
+import { AwesomeButton } from "react-awesome-button";
+import AwesomeButtonStyles from "react-awesome-button/src/styles/styles.scss";
 
 
 class DogsContainer extends Component {
@@ -60,7 +62,10 @@ class DogsContainer extends Component {
 
   render() {
     return (
+      <div>
+      {/* <AwesomeButton type="primary"></AwesomeButton> */}
       <div className="dog-wrapper">
+        
         <Route exact path="/dogs/:id" render={(props) => (
           <PetProfile
             dogId={props.match.params.id}
@@ -78,10 +83,12 @@ class DogsContainer extends Component {
             <div className = "DogContainer">
               <div className = "dog-details">
                 <img src={dog.img} alt="dog pic"/> 
-                <h2>Name: {dog.name}</h2>
-                <h3>Breed: {dog.breed}</h3>
-                <h3>Age: {dog.age}</h3>
-                <h3>Location: {dog.location}</h3>
+                <div className="words">
+                  <div> {dog.name}</div>
+                  <div> {dog.breed}</div>
+                  <div> {dog.age} Years Old</div>
+                  <div> {dog.location}</div>
+                </div>
                 
                     {/* <Link to={`/dogs/${dog.id}/profile`}>
                     <Button size="small">
@@ -98,34 +105,24 @@ class DogsContainer extends Component {
                         Delete
                     </Button>
 
-                    <Link to={`/${dog.id}/adoption`}> 
-                    <Button size="small">Application
-                    </Button>
-                    </Link>
-
-                    <Route exact path="/dogs/:id/adoption" render={(props) => (
-                    <Adoption
-                      // dogs={this.state.name}
-                      // updateDog={this.updateDog}
-                      // dogId={props.match.params.id}
-                    />
-                    
-                    )} />
-
                   <Route exact path="/dogs/:id/edit" render={(props) => (
                     <UpdatePetProfile
                       dogs={this.state.dogs}
                       updateDog={this.updateDog}
                       dogId={props.match.params.id}
                     />
-        )} />
-                    
+                    )} />
+                      <AwesomeButton className="awesome-button" cssModule={AwesomeButtonStyles} type="primary">
+                        Apply
+                      </AwesomeButton>
             </div>
             </div>
           ))
           
         }
-
+                            
+                            </div>
+              
       </div>
     )
   }

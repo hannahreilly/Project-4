@@ -11,8 +11,14 @@ class DogsController < ApplicationController
 
     # POST /dogs
     def create
-      @dog = current_user.dogs.create!(dog_params)
-      json_response(@dog, :created)
+      #@dog = current_user.dogs.create!(dogs_params)
+      #json_response(@dog, :created)
+      @dog= Dog.new(dog_params)
+      #if current_user.dogs << @dog
+        render json: @dog, status: :created, location: @dog
+      #else
+      #  render json: @dog.errors, status: :unprocessable_entity
+      #end
     end
 
     # GET /dogs/:id
@@ -22,7 +28,7 @@ class DogsController < ApplicationController
 
     # PUT /dogs/:id
     def update
-      @dog.update(dogs_params)
+      @dog.update(dog_params)
       json_response(status: 'SUCCESS', message: 'updated the dog', data: @dog.name)
     end
 
@@ -35,9 +41,9 @@ class DogsController < ApplicationController
 
     private
 
-    def dogs_params
+    def dog_params
       # whitelist params
-      params.permit(:name, :location)
+      params.require(:dog).permit(:name, :location, :breed, :age)
     end
 
     def set_dog

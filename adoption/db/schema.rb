@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2020_02_12_235905) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "adopts", force: :cascade do |t|
-    t.integer "dog_id", null: false
-    t.integer "adopts_id", null: false
+    t.bigint "dog_id", null: false
+    t.bigint "adopts_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["adopts_id"], name: "index_adopts_on_adopts_id"
